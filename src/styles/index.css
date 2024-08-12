@@ -1,12 +1,41 @@
+body{
+    background-image: url(https://img.freepik.com/foto-gratis/notificacion-recordatorio-calendario-lapiz-planificador-eventos-nuevo-icono-nota-ilustracion-3d-sobre-fondo-purpura_56104-1775.jpg?t=st=1723420002~exp=1723423602~hmac=76519fd02bee9080bf9f47f49bb52d01292cadab811bb0b6a3f7610407c1509b&w=900);
+    background-repeat: no-repeat;   
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: contain;  
+    background-color: rgb(221, 195, 245);  
+}
 
-/* 
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+input{
+    border-color: aqua;
+}
 
-*/
+.estilo{
+  display: flex;
+  justify-content: center;
+  margin-top: 19.5%;
+}
+
+.agregartareas{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+
+.addtask{
+    display: flex;
+    justify-content: center;
+}
+
+.trash{
+    margin-bottom: 5px;
+}
