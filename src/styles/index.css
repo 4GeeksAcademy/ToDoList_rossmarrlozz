@@ -1,27 +1,34 @@
 body{
-    background-image: url(https://img.freepik.com/foto-gratis/notificacion-recordatorio-calendario-lapiz-planificador-eventos-nuevo-icono-nota-ilustracion-3d-sobre-fondo-purpura_56104-1775.jpg?t=st=1723420002~exp=1723423602~hmac=76519fd02bee9080bf9f47f49bb52d01292cadab811bb0b6a3f7610407c1509b&w=900);
+    background-image: url(https://img.freepik.com/foto-gratis/tarjeta-felicitacion-vista-superior-gancho-forma-corazon_23-2148451012.jpg?t=st=1723627265~exp=1723630865~hmac=ea4381536ce751c74616c01116485b60466d3fa371b406a6b458adc4309c42fe&w=900);
     background-repeat: no-repeat;   
     background-position: center center;
     background-attachment: fixed;
     background-size: contain;  
-    background-color: rgb(221, 195, 245);  
+    background-color: rgb(253, 250, 250);  
 }
 
 
 input{
     border-color: aqua;
+    flex: 1;
 }
 
 .estilo{
   display: flex;
   justify-content: center;
-  margin-top: 19.5%;
+  margin-top: 13%;
+  max-width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+
 }
 
 .agregartareas{
     list-style: none;
-    display: flex;
+    display: block;
     justify-content: center;
+    overflow-y: auto;
+    flex: 1;
 }
 
 .titulo{
@@ -38,4 +45,9 @@ input{
 
 .trash{
     margin-bottom: 5px;
+    margin-left: 1rem;
+}
+
+.card {
+    max-height: 100%;
 }

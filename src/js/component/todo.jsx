@@ -23,11 +23,11 @@ function Todo() {
 		setNuevalista(trashs);
 	}
 	
-
+	
 	return (
 		<Container fluid className='estilo'>
 
-			<Card style={{ width: '25rem', height: '18rem' }}>
+			<Card style={{ width: '50rem', height: '30rem' }}>
 
 				<Card.Header className='titulo'> <strong>ToDoList</strong></Card.Header>
 
