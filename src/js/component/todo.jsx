@@ -35,7 +35,7 @@ function Todo() {
 					<ListGroup.Item className='addtask'>
 						<input type="text"
 							onChange={handleChange}
-							placeholder="Agrega una tarea"
+							placeholder="No hay tareas, añadir tareas"
 						/>
 						<button className='btn btn-info' onClick={handleClick}>
 							<i class="fa fa-plus"></i>
