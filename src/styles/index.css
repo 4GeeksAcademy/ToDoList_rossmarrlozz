@@ -1,11 +1,25 @@
 body{
-    background-color: aquamarine;
+    background-image: url(https://img.freepik.com/foto-gratis/representacion-3d-fondo-abstracto-blanco-negro_23-2150913875.jpg?t=st=1724618395~exp=1724621995~hmac=9c62d15487afd4fdfd8f7dcbda3b612a03a6071c2a643736e54b597cdb5896f6&w=1060);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    margin: auto;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.contenedorListadetareas{
+    width: 50rem;
+    min-height: 50rem; 
+    background-color:black;
 }
 
 .estilo{
     display: flex;
     justify-content: center;
-    margin-top: 13%;
+    margin-top: 5%;
     max-width: 100%;
     max-height: 80vh;
     overflow: hidden;
@@ -23,14 +37,16 @@ body{
   .titulo{
       display: flex;
       justify-content: center;
-      font-size: xx-large;
+      font-size: x-large;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: aliceblue;
   }
   
   
   .addtask{
       display: flex;
       justify-content: center;
-      background-color:#da8aee;
+      background-color:#111011;
   }
   
   .trash{
@@ -43,6 +59,14 @@ body{
   }
 
   input{
-    border-color: aquamarine;
+    border-color: rgba(93, 59, 230, 0.312);
     flex: 1;
+}
+
+.contadordetareas{
+    margin-bottom: 1%;
+}
+
+.limpiartareas{
+    margin-bottom: 10%;
 }
