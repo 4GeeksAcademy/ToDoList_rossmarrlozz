@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
+
 
 
 function Todo() {
@@ -12,6 +13,25 @@ function Todo() {
 	const borrarTarea = (index) => {
 		setTareas(tareas.filter((_, i) => i !== index));
 	};
+
+	/*useEffect*/
+
+	useEffect(() => {
+		// Obtener tareas de la API
+		const fetchTareas = async () => {
+		  try {
+			const respuesta = await fetch('https://playground.4geeks.com/todo/users/ross_marr_lozz');
+			const datos = await respuesta.json();
+			setTareas(datos.todos);
+		  } catch (error) {
+			console.error('Error al obtener tareas:', error);
+		  }
+		};
+	  
+		fetchTareas(); // Llama a la función para obtener las tareas
+	  }, []); 
+
+	
 
 
 	return (
