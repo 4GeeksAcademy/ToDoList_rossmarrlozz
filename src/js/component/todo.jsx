@@ -1,97 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
-import { useState } from 'react';
 
 
 function Todo() {
 
-	const [addtarea, setAddtarea] = useState("");
-	const [nuevaTareaEnLaLista, setNuevaTareaEnLaLista] = useState([]);
-
-	const handleChange = (event) => {
-		setAddtarea(event.target.value);
+	/*usestate*/
+	const [tareas, setTareas] = useState([]) /*almacena tareas*/
+	const [nuevaTarea, setNuevaTarea] = useState("") /*entrada de texto*/
+	const borrarTarea = (index) => {
+		setTareas(tareas.filter((_, i) => i !== index));
 	};
 
-	const handleClick = () => {
-		addTodo();
-	}
-
-	const borrartarea = (index) => {
-		const trash = nuevaTareaEnLaLista.filter((list, i) => i !== index)
-		setNuevaTareaEnLaLista(trash);
-	}
-
-	const limpiarTareas = async () => {
-		const updatedList = [];
-		setNuevaTareaEnLaLista(updatedList);
-		await syncWithServer(updatedList);
-	}
-
-	const usuario = "rossmarrlozz";
-
-	const getUsers = () => {
-		fetch(`https://playground.4geeks.com/todo/users/${usuario}`)
-			.then(respuesta => {
-				if (respuesta.ok) {
-					return respuesta.json();
-				} else {
-					throw new Error("User not found");
-				}
-			})
-			.then(data => setNuevaTareaEnLaLista(data.todos))
-			.catch(error => {
-				console.error("error loading list", error);
-			});
-	};
-
-
-	const addUser = () => {
-		fetch(`https://playground.4geeks.com/todo/users/${usuario}`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify([])
-		})
-			.then(respuesta => {
-				if (respuesta.ok) {
-					console.log(`user${usuario}created successfully`);
-				} else {
-					console.error("error creating user");
-				}
-			})
-			.catch(error => console.error("error creating user", error));
-	};
-
-	const addTodo = () => {
-		fetch(`https://playground.4geeks.com/todo/todos/${usuario}`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(
-				{
-					label: addtarea,
-					is_done: false
-				})
-		})
-			.then(respuesta => {
-				if (respuesta.ok) {
-					console.log( "Task added successfully");
-					getUsers()
-				} else {
-					console.error("error creating user");
-				}
-			})
-			.catch(error => console.error("error creating user", error));
-	};
-
-	useEffect(() => {
-		addUser();
-		getUsers();
-	}, []);
 
 	return (
 
@@ -103,32 +24,52 @@ function Todo() {
 
 				<ListGroup variant="flush">
 					<ListGroup.Item className='addtask'>
+
 						<input type="text"
 							id="name"
 							name="name"
-							onChange={(e) => setAddtarea(e.target.value)}
-							value={addtarea}
-							placeholder="Añadir tareas" />
+							placeholder="Añadir tareas"
+							//*Actualiza las nuevas tareas*//
+							value={nuevaTarea}
+							onChange={(e) => setNuevaTarea(e.target.value)} />
 
-						<button className='btn btn-info' onClick={handleClick}>
+						<button
+							className='btn btn-info'
+							onClick={() => {
+								if (nuevaTarea !== "") {
+									setTareas([...tareas, nuevaTarea]); // Añade la nueva tarea a la lista
+									setNuevaTarea(""); // Limpia el input
+								}
+							}}
+						>
 							<i className="fa fa-plus"></i>
 						</button>
+
 					</ListGroup.Item>
 				</ListGroup>
 
 				<ul className='agregartareas row'>
-					{nuevaTareaEnLaLista.map((list, index) => (
-						<li key={index}>
-							{list.label}
-							<button onClick={() => borrartarea(index)} className='btn btn-info trash'>
-								<i className="fa fa-trash"></i></button>
+					{tareas.map((tarea, index) => (
+						<li key={index} className="formatoTareas">
+							{tarea}
+							<button
+								className='btn btn-info trash'
+								onClick={() => borrarTarea(index)}
+							>
+								<i className="fa fa-trash"></i>
+							</button>
 						</li>
 					))}
+
+
+
 				</ul>
 
-				<Card.Footer className="text-muted contadordetareas">{nuevaTareaEnLaLista.length} tareas por hacer</Card.Footer>
-				<button onClick={limpiarTareas} className='btn btn-info ml-3 limpiartareas'>
-					Limpiar Todas
+				<Card.Footer className="text-muted contadordetareas">{tareas.length} tareas por hacer</Card.Footer>
+				<button className='btn btn-info ml-3 limpiartareas'
+					onClick={() => setTareas([])} // Limpia todas las tareas
+				>
+					<strong>Limpiar Todas</strong>
 				</button>
 			</Card>
 		</Container>
